@@ -19,8 +19,8 @@ class AssetLibraryUI(QtWidgets.QMainWindow):
         self.populate_list_widget()
 
     def build_ui(self):
-        """Builds the UI using Qt.py to determine which version of PyQt/Pyside to use.
-        """
+        '''Builds the UI using Qt.py to determine which version of PyQt/Pyside to use.
+        '''
 
         # =====================================================================
         # PYQT Widget Defintions
@@ -75,8 +75,8 @@ class AssetLibraryUI(QtWidgets.QMainWindow):
         close_btn.clicked.connect(self.close)
 
     def populate_list_widget(self):
-        """Populates QListWidget with assets loaded from json files.
-        """
+        '''Populates QListWidget with assets loaded from json files.
+        '''
 
         self.thumbnail_list_widget.clear()
         self.library.find_ctrl()
@@ -94,8 +94,8 @@ class AssetLibraryUI(QtWidgets.QMainWindow):
             item.setToolTip(pprint.pformat(info))
 
     def load_ctrls(self):
-        """Loads selected asset from QListWidget Library
-        """
+        '''Loads selected asset from QListWidget Library
+        '''
 
         current_item = self.thumbnail_list_widget.currentItem()
 
@@ -106,8 +106,8 @@ class AssetLibraryUI(QtWidgets.QMainWindow):
             self.library.load_ctrl(name)
 
     def save_ctrls(self):
-        """Saves and adds to new asset entry to QListWidget
-        """
+        '''Saves and adds to new asset entry to QListWidget
+        '''
 
         name = self.save_name_le.text()
 
@@ -121,16 +121,16 @@ class AssetLibraryUI(QtWidgets.QMainWindow):
 
 
 def showUI():
-    """Shows Qt UI and attaches the UI to the main Maya window
+    '''Shows Qt UI and attaches the UI to the main Maya window
 
     Returns:
         Qt Interface -- Qt UI that executes functionality from
                         controllerLibrary
-    """
+    '''
 
     main_window = \
         [o for o in QtWidgets.qApp.topLevelWidgets()
-            if o.objectName() == "MayaWindow"][0]
+            if o.objectName() == 'MayaWindow'][0]
 
     ui = AssetLibraryUI(main_window)
     ui.show()

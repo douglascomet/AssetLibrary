@@ -19,13 +19,13 @@ LIBRARY_PATH = os.path.join(DIRECTORY, 'Library')
 
 
 def create_directory(directory=LIBRARY_PATH):
-    """If the default library directory or a new library directory is not
+    '''If the default library directory or a new library directory is not
         found a new one is created
 
     Keyword Arguments:
         directory {string} -- Input directory to create asset library
                                 (default: {LIBRARY_PATH})
-    """
+    '''
 
     # if controllerLibrary directory does not exists
     # make the directory
@@ -34,11 +34,11 @@ def create_directory(directory=LIBRARY_PATH):
 
 
 class AssetLibrary(dict):
-    """Dictionary based class used to store information about Maya assets
-    """
+    '''Dictionary based class used to store information about Maya assets
+    '''
 
     def save_ctrl(self, name, directory=LIBRARY_PATH, screenshot=True, **info):
-        """Creates new entry into asset library and stores information into
+        '''Creates new entry into asset library and stores information into
             json files
 
         Arguments:
@@ -53,7 +53,7 @@ class AssetLibrary(dict):
                                     new asset should a screenshot of the asset
                                     be included or not
                                     (default: {True})
-        """
+        '''
 
         create_directory(directory)
 
@@ -80,12 +80,12 @@ class AssetLibrary(dict):
         self[name] = info
 
     def find_ctrl(self, directory=LIBRARY_PATH):
-        """Find assets within asset library
+        '''Find assets within asset library
 
         Keyword Arguments:
             directory {string} -- Path of the asset library
                                     (default: {LIBRARY_PATH})
-        """
+        '''
 
         self.clear()
 
@@ -128,18 +128,18 @@ class AssetLibrary(dict):
         pprint.pprint(self)
 
     def load_ctrl(self, name):
-        """Imports selected asset into current Maya scene
+        '''Imports selected asset into current Maya scene
 
         Arguments:
             name {string} -- Name of the asset to be imported
-        """
+        '''
 
         path = self[name]['path']
 
         cmds.file(path, i=True, usingNamespaces=False)
 
     def save_screenshot(self, name, directory=DIRECTORY):
-        """[summary]
+        '''[summary]
 
         Arguments:
             name {string} -- Name of the asset to be used to make
@@ -151,7 +151,7 @@ class AssetLibrary(dict):
 
         Returns:
             string -- Returns path of the screenshot file
-        """
+        '''
 
         path = os.path.join(directory, '{0}.jpg'.format(name))
 
